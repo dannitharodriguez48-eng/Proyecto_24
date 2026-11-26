@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis historias</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="contenedor">
+        <header class="encabezado">
+            <div>
+                <p class="etiqueta">ESPACIO PERSONAL</p>
+                <h1>Mis historias</h1>
+                <p class="descripcion">Comparte momentos en imágenes que duran 24 horas.</p>
+            </div>
+        </header>
+
+        <section class="seccion-historias">
+            <div class="titulo-lista">
+                <h2>Historias recientes</h2>
+                <span id="cantidadHistorias">0 historias</span>
+            </div>
+
+            <div class="lista-contenedor">
+                <button type="button" id="btnAgregar" class="boton-agregar" aria-label="Agregar una historia">
+                    <span class="circulo-mas">+</span>
+                    <span>Agregar</span>
+                </button>
+
+                <div id="listaHistorias" class="lista-historias"></div>
+            </div>
+
+            <p id="mensajeVacio" class="mensaje-vacio">
+                Todavía no hay historias. Pulsa el botón + para agregar una imagen.
+            </p>
+
+            <input type="file" id="archivoImagen" accept="image/jpeg,image/png,image/webp" hidden>
+        </section>
+
+        <section class="nota-informacion">
+            <h2>¿Cómo funciona?</h2>
+            <p>Elige una imagen y se guardará en este navegador. Cada historia se elimina automáticamente después de 24 horas.</p>
+            <p class="nota-pequena">Las historias se guardan en este dispositivo mediante el almacenamiento local del navegador.</p>
+        </section>
+    </main>
+
+    <section id="visor" class="visor oculto" aria-label="Visor de historias">
+        <div class="visor-contenido">
+            <div id="barrasProgreso" class="barras-progreso"></div>
+
+            <div class="visor-encabezado">
+                <div>
+                    <strong>Mi historia</strong>
+                    <span id="horaHistoria"></span>
+                </div>
+                <button type="button" id="btnCerrar" class="cerrar-visor" aria-label="Cerrar historia">×</button>
+            </div>
+
+            <button type="button" id="btnAnterior" class="flecha-visor anterior" aria-label="Historia anterior">‹</button>
+            <img id="imagenHistoria" class="imagen-historia" src="" alt="Historia seleccionada">
+            <button type="button" id="btnSiguiente" class="flecha-visor siguiente" aria-label="Historia siguiente">›</button>
+        </div>
+    </section>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

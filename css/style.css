@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    padding: 30px 16px;
+    background-color: #f4f4f4;
+    color: #292929;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.encabezado {
+    margin-bottom: 22px;
+}
+
+.etiqueta {
+    margin-bottom: 6px;
+    color: #b32636;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+
+h1 {
+    margin-bottom: 7px;
+    color: #292929;
+    font-size: 28px;
+}
+
+.descripcion {
+    color: #707070;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.seccion-historias,
+.nota-informacion {
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 11px;
+    background-color: #ffffff;
+}
+
+.titulo-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 17px;
+}
+
+.titulo-lista h2,
+.nota-informacion h2 {
+    font-size: 17px;
+}
+
+.titulo-lista span {
+    color: #888888;
+    font-size: 12px;
+}
+
+.lista-contenedor {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    min-height: 92px;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+}
+
+.boton-agregar,
+.historia {
+    width: 70px;
+    flex: 0 0 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    border: none;
+    background: transparent;
+    color: #555555;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.circulo-mas {
+    width: 62px;
+    height: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #c62838;
+    border-radius: 50%;
+    background-color: #fff5f6;
+    color: #c62838;
+    font-size: 34px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.boton-agregar:hover .circulo-mas {
+    background-color: #f9e1e4;
+}
+
+.lista-historias {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.historia-imagen {
+    width: 62px;
+    height: 62px;
+    padding: 3px;
+    border: 2px solid #c62838;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ffffff;
+}
+
+.historia:hover .historia-imagen {
+    opacity: 0.8;
+}
+
+.historia-nombre {
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mensaje-vacio {
+    margin-top: 8px;
+    padding: 13px;
+    border-radius: 7px;
+    background-color: #f7f7f7;
+    color: #777777;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.nota-informacion {
+    margin-top: 16px;
+}
+
+.nota-informacion h2 {
+    margin-bottom: 8px;
+    color: #a82030;
+}
+
+.nota-informacion p {
+    color: #5e5e5e;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.nota-informacion .nota-pequena {
+    margin-top: 8px;
+    color: #888888;
+    font-size: 12px;
+}
+
+/* Visor de historias */
+.visor {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px;
+    background-color: rgba(20, 20, 20, 0.94);
+}
+
+.oculto {
+    display: none !important;
+}
+
+.visor-contenido {
+    position: relative;
+    width: min(430px, 100%);
+    height: min(780px, 92vh);
+    overflow: hidden;
+    border-radius: 12px;
+    background-color: #222222;
+}
+
+.barras-progreso {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 3;
+    display: flex;
+    gap: 4px;
+}
+
+.tramo-progreso {
+    height: 4px;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.45);
+}
+
+.tramo-progreso span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.tramo-progreso.completo span {
+    width: 100%;
+}
+
+.tramo-progreso.activo span {
+    animation: avanzar 3s linear forwards;
+}
+
+@keyframes avanzar {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+.visor-encabezado {
+    position: absolute;
+    top: 24px;
+    left: 15px;
+    right: 15px;
+    z-index: 4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffffff;
+    text-shadow: 0 1px 4px #000000;
+}
+
+.visor-encabezado div {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.visor-encabezado strong {
+    font-size: 13px;
+}
+
+.visor-encabezado span {
+    font-size: 11px;
+}
+
+.cerrar-visor {
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    font-size: 27px;
+    cursor: pointer;
+}
+
+.imagen-historia {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background-color: #161616;
+}
+
+.flecha-visor {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    width: 34px;
+    height: 48px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.flecha-visor.anterior {
+    left: 8px;
+}
+
+.flecha-visor.siguiente {
+    right: 8px;
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 20px 11px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .seccion-historias,
+    .nota-informacion {
+        padding: 16px;
+    }
+
+    .visor {
+        padding: 0;
+    }
+
+    .visor-contenido {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
